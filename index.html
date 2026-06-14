@@ -44,8 +44,9 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1.8rem;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
             border-bottom: 2px solid rgba(72, 94, 114, 0.2);
             padding-bottom: 1rem;
         }
@@ -57,50 +58,186 @@
             color: #1a1a2e;
         }
 
-        .period-badge {
-            background: white;
-            padding: 0.5rem 1.2rem;
+        .progress-badge {
+            background: linear-gradient(135deg, #b07cdb, #8b7ce8);
+            color: white;
+            padding: 0.5rem 1.4rem;
             border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(139, 124, 232, 0.35);
+        }
+
+        .period-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .period-field {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6c4ab6;
+            background: white;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .period-field input[type="date"] {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            cursor: pointer;
+        }
+
+        .period-days {
+            font-size: 0.8rem;
+            color: #8b7ca8;
+            font-weight: 600;
+        }
+
+        .btn-toggle-settings {
+            margin-left: auto;
+            background: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
             font-weight: 600;
             font-size: 0.85rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            color: #8b5cb8;
-        }
-
-        .stats-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: rgba(255,255,255,0.6);
-            padding: 0.9rem 1.5rem;
-            border-radius: 2rem;
-            justify-content: space-between;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 0.4rem 1.2rem;
-            border-radius: 2rem;
-            display: flex;
-            gap: 0.6rem;
-            align-items: baseline;
-            flex-wrap: wrap;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b7ca8;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 800;
             color: #6c4ab6;
-            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.1s ease;
+        }
+
+        .btn-toggle-settings:hover {
+            transform: translateY(-1px);
+        }
+
+        .settings-panel {
+            background: rgba(255,255,255,0.6);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .settings-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .habit-edit-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            border-radius: 1rem;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .habit-edit-name {
+            font-weight: 700;
+            flex: 1 1 160px;
+        }
+
+        .habit-edit-meta {
+            font-size: 0.8rem;
+            color: #8b7ca8;
+            flex: 2 1 220px;
+        }
+
+        .btn-remove {
+            background: #fde6ef;
+            color: #c14d7c;
+            border: none;
+            padding: 0.35rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-remove:hover {
+            background: #fbd0e2;
+        }
+
+        .add-habit-form {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .input-text, .input-select, .input-number {
+            border: 1px solid rgba(139, 124, 168, 0.3);
+            border-radius: 0.8rem;
+            padding: 0.5rem 0.8rem;
+            font-family: inherit;
+            font-size: 0.85rem;
+            background: white;
+            color: #1a1a2e;
+        }
+
+        .input-text {
+            flex: 1 1 200px;
+        }
+
+        .weekday-picker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .weekday-picker label {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(139, 124, 168, 0.3);
+        }
+
+        .interval-picker {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .input-number {
+            width: 70px;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #b07cdb, #8b7ce8);
+            color: white;
+            border: none;
+            padding: 0.55rem 1.4rem;
+            border-radius: 0.8rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
         }
 
         .category-block {
@@ -185,14 +322,6 @@
             width: 0%;
             border-radius: 20px;
             transition: width 0.3s ease;
-        }
-
-        .streak-badge {
-            background: #fff0db;
-            padding: 0.15rem 0.7rem;
-            border-radius: 40px;
-            color: #b45f1b;
-            font-weight: 600;
         }
 
         .rule-note {
@@ -284,6 +413,9 @@
             .habit-stats {
                 gap: 0.5rem;
             }
+            .btn-toggle-settings {
+                margin-left: 0;
+            }
         }
 
         .info-footer {
@@ -301,21 +433,57 @@
     <div class="tracker-global">
         <div class="header">
             <h1>Комплексный трекер здоровья</h1>
-            <div class="period-badge">4 июня – 3 июля 2026 • 30 дней</div>
+            <div class="progress-badge">Общий прогресс: {{ overallProgress }}%</div>
         </div>
 
-        <div class="stats-row">
-            <div class="stat-card"><span class="stat-label">Общий прогресс</span><span class="stat-value">{{ overallProgress }}%</span></div>
-            <div class="stat-card"><span class="stat-label">Выполнено сегодня</span><span class="stat-value">{{ todayDoneCount }} / {{ totalHabitsCount }}</span></div>
+        <div class="period-row">
+            <label class="period-field">С <input type="date" v-model="periodStart"></label>
+            <label class="period-field">По <input type="date" v-model="periodEnd"></label>
+            <span class="period-days">{{ daysList.length }} дней</span>
+            <button class="btn-toggle-settings" @click="showSettings = !showSettings">
+                {{ showSettings ? 'Закрыть настройки' : 'Настроить привычки' }}
+            </button>
         </div>
 
         <div class="info-footer">
-            <strong>Целевые дни обведены оранжевым</strong> — это рекомендованные даты (рассчитаны для 2026 года).<br>
-            Вы можете отмечать <strong>любой день</strong> (в том числе нецелевой). Прогресс считается по целевым дням, серия — по последовательным выполненным целевым дням. Данные сохраняются в браузере.
+            <strong>Целевые дни обведены оранжевым</strong> — это рекомендованные даты в рамках выбранного периода.<br>
+            Вы можете отмечать <strong>любой день</strong> (в том числе нецелевой). Прогресс считается по целевым дням. Данные сохраняются в браузере.
+        </div>
+
+        <div class="settings-panel" v-if="showSettings">
+            <div class="settings-title">Мои привычки</div>
+            <div class="habit-edit-row" v-for="habit in habits" :key="habit.id">
+                <span class="habit-edit-name">{{ habit.name }}</span>
+                <span class="habit-edit-meta">{{ categoryLabel(habit.category) }} · {{ habitRuleText(habit) }}</span>
+                <button class="btn-remove" @click="removeHabit(habit.id)">Удалить</button>
+            </div>
+
+            <div class="add-habit-form">
+                <input type="text" v-model="newHabit.name" placeholder="Название привычки" class="input-text" @keyup.enter="addHabit">
+                <select v-model="newHabit.category" class="input-select">
+                    <option value="face">Уход за лицом</option>
+                    <option value="hair">Уход за волосами</option>
+                    <option value="general">Общее состояние</option>
+                </select>
+                <select v-model="newHabit.ruleType" class="input-select">
+                    <option value="everyday">Каждый день</option>
+                    <option value="specific_weekdays">По дням недели</option>
+                    <option value="interval_days">Через интервал дней</option>
+                </select>
+                <div v-if="newHabit.ruleType === 'specific_weekdays'" class="weekday-picker">
+                    <label v-for="wd in weekdayOptions" :key="wd.value">
+                        <input type="checkbox" :value="wd.value" v-model="newHabit.weekdays"> {{ wd.label }}
+                    </label>
+                </div>
+                <div v-if="newHabit.ruleType === 'interval_days'" class="interval-picker">
+                    Раз в <input type="number" min="2" max="30" v-model.number="newHabit.intervalStep" class="input-number"> дней
+                </div>
+                <button class="btn-add" @click="addHabit">Добавить привычку</button>
+            </div>
         </div>
 
         <!-- Блок 1: Уход за лицом -->
-        <div class="category-block face">
+        <div class="category-block face" v-if="getHabitsByCategory('face').length">
             <div class="category-title">Уход за лицом</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('face')" :key="habit.id" class="habit-card">
@@ -324,10 +492,9 @@
                         <div class="habit-stats">
                             <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
-                    <div class="rule-note" v-html="habit.ruleText"></div>
+                    <div class="rule-note">{{ habitRuleText(habit) }}</div>
                     <div class="days-scroll">
                         <div class="days-row">
                             <div v-for="day in daysList" :key="day.dateStr"
@@ -347,7 +514,7 @@
         </div>
 
         <!-- Блок 2: Уход за волосами -->
-        <div class="category-block hair">
+        <div class="category-block hair" v-if="getHabitsByCategory('hair').length">
             <div class="category-title">Уход за волосами</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('hair')" :key="habit.id" class="habit-card">
@@ -356,10 +523,9 @@
                         <div class="habit-stats">
                             <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
-                    <div class="rule-note" v-html="habit.ruleText"></div>
+                    <div class="rule-note">{{ habitRuleText(habit) }}</div>
                     <div class="days-scroll">
                         <div class="days-row">
                             <div v-for="day in daysList" :key="day.dateStr"
@@ -376,7 +542,7 @@
         </div>
 
         <!-- Блок 3: Забота об общем состоянии -->
-        <div class="category-block general">
+        <div class="category-block general" v-if="getHabitsByCategory('general').length">
             <div class="category-title">Забота об общем состоянии</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('general')" :key="habit.id" class="habit-card">
@@ -385,10 +551,9 @@
                         <div class="habit-stats">
                             <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
-                    <div class="rule-note" v-html="habit.ruleText"></div>
+                    <div class="rule-note">{{ habitRuleText(habit) }}</div>
                     <div class="days-scroll">
                         <div class="days-row">
                             <div v-for="day in daysList" :key="day.dateStr"
@@ -408,216 +573,197 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 <script>
-    // ----- ФИКСИРОВАННЫЙ ПЕРИОД: 4 июня — 3 июля 2026 года (30 дней) -----
-    const START_DATE = new Date(2026, 5, 4);   // 4 июня 2026
-    const END_DATE   = new Date(2026, 6, 3);   // 3 июля 2026
-    
-    function generateDateRange() {
+    const DEFAULT_PERIOD_START = '2026-06-04';
+    const DEFAULT_PERIOD_END = '2026-07-03';
+
+    function formatDateStr(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+    }
+
+    function generateDateRange(startStr, endStr) {
         const days = [];
-        let current = new Date(START_DATE);
-        while (current <= END_DATE) {
-            const year = current.getFullYear();
-            const month = String(current.getMonth() + 1).padStart(2, '0');
-            const day = String(current.getDate()).padStart(2, '0');
-            const dateStr = `${year}-${month}-${day}`;
-            const dayNum = current.getDate();
-            const weekdayShort = current.toLocaleDateString('ru-RU', { weekday: 'short' }).replace(',', '');
+        const start = new Date(startStr);
+        const end = new Date(endStr);
+        if (isNaN(start) || isNaN(end) || start > end) return days;
+        let current = new Date(start);
+        while (current <= end) {
             days.push({
-                dateStr, dayNum, weekdayShort,
+                dateStr: formatDateStr(current),
+                dayNum: current.getDate(),
+                weekdayShort: current.toLocaleDateString('ru-RU', { weekday: 'short' }).replace(',', ''),
                 fullDate: new Date(current)
             });
             current.setDate(current.getDate() + 1);
         }
         return days;
     }
-    const DAYS_LIST = generateDateRange(); // 30 дней
-    
-    // ---------- Правила для привычек (целевые дни) с привязкой к 2026 году ----------
-    function getTargetDaysForHabit(habitRule) {
+
+    // ---------- Целевые дни для привычки в рамках выбранного периода ----------
+    function getTargetDaysForHabit(habitRule, daysList, periodEndStr) {
+        const target = new Set();
         if (habitRule.type === 'everyday') {
-            const set = new Set();
-            DAYS_LIST.forEach(day => set.add(day.dateStr));
-            return set;
-        }
-        else if (habitRule.type === 'specific_weekdays') {
-            // weekdays: массив номеров дней недели (1=пн, 2=вт, 3=ср, 4=чт, 5=пт, 6=сб, 7=вс)
-            const target = new Set();
-            DAYS_LIST.forEach(day => {
-                let wd = day.fullDate.getDay(); // 0 вс, 1 пн ... 6 сб
-                let iso = wd === 0 ? 7 : wd;
-                if (habitRule.weekdays.includes(iso)) {
-                    target.add(day.dateStr);
-                }
+            daysList.forEach(day => target.add(day.dateStr));
+        } else if (habitRule.type === 'specific_weekdays') {
+            // weekdays: массив номеров дней недели (1=пн ... 7=вс)
+            daysList.forEach(day => {
+                const wd = day.fullDate.getDay(); // 0 вс, 1 пн ... 6 сб
+                const iso = wd === 0 ? 7 : wd;
+                if (habitRule.weekdays.includes(iso)) target.add(day.dateStr);
             });
-            return target;
-        }
-        else if (habitRule.type === 'interval_days') {
-            const target = new Set();
+        } else if (habitRule.type === 'interval_days') {
             const start = new Date(habitRule.startDate);
-            const stepDays = habitRule.step;
-            let current = new Date(start);
-            while (current <= END_DATE) {
-                const y = current.getFullYear();
-                const m = String(current.getMonth()+1).padStart(2,'0');
-                const d = String(current.getDate()).padStart(2,'0');
-                target.add(`${y}-${m}-${d}`);
-                current.setDate(current.getDate() + stepDays);
+            const end = new Date(periodEndStr);
+            const stepDays = Math.max(2, habitRule.step || 2);
+            if (!isNaN(start) && !isNaN(end)) {
+                let current = new Date(start);
+                while (current <= end) {
+                    target.add(formatDateStr(current));
+                    current.setDate(current.getDate() + stepDays);
+                }
             }
-            return target;
         }
-        return new Set();
+        return target;
     }
-    
-    // ----- СПИСОК ПРИВЫЧЕК (все даты и дни недели для 2026 года) -----
-    // Пилинг лица: 1 раз в 3 дня, начиная с 4 июня 2026
-    // Спрей: понедельник и четверг (в 2026: 04.06 — четверг, 08.06 — понедельник и т.д.)
-    // Пилинг кожи головы: 1 раз в 6 дней с 04.06 → 04.06, 10.06, 16.06, 22.06, 28.06
-    const HABITS_DATA = [
-        // Уход за лицом
-        { id: 1, name: 'Пилинг лица', category: 'face',
-          rule: { type: 'interval_days', startDate: '2026-06-04', step: 3 },
-          ruleText: '1 раз в 3 дня (целевые: 04.06, 07.06, 10.06, 13.06, 16.06, 19.06, 22.06, 25.06, 28.06, 01.07)' },
 
-        // Уход за волосами
-        { id: 2, name: 'Втирать сыворотку', category: 'hair',
-          rule: { type: 'everyday' },
-          ruleText: 'каждый день (обязательно)' },
-        { id: 3, name: 'Втирать спрей', category: 'hair',
-          rule: { type: 'specific_weekdays', weekdays: [1,4] },   // понедельник и четверг
-          ruleText: 'каждый понедельник и четверг (2026: 04.06(чт), 08.06(пн), 11.06(чт), 15.06(пн), 18.06(чт), 22.06(пн), 25.06(чт), 29.06(пн), 02.07(чт))' },
-        { id: 4, name: 'Пилинг кожи головы', category: 'hair',
-          rule: { type: 'interval_days', startDate: '2026-06-04', step: 6 },
-          ruleText: '1 раз в 6 дней (04.06, 10.06, 16.06, 22.06, 28.06)' },
+    const WEEKDAY_NAMES = { 1: 'пн', 2: 'вт', 3: 'ср', 4: 'чт', 5: 'пт', 6: 'сб', 7: 'вс' };
 
-        // Общее состояние (каждый день)
-        { id: 5, name: 'Витамин D', category: 'general',
-          rule: { type: 'everyday' },
-          ruleText: 'каждый день' },
-        { id: 6, name: 'Женские витамины', category: 'general',
-          rule: { type: 'everyday' },
-          ruleText: 'каждый день' },
-        { id: 7, name: 'Железо', category: 'general',
-          rule: { type: 'everyday' },
-          ruleText: 'каждый день' }
+    function describeRule(rule) {
+        if (rule.type === 'everyday') return 'каждый день';
+        if (rule.type === 'specific_weekdays') {
+            return 'по дням: ' + rule.weekdays.slice().sort().map(d => WEEKDAY_NAMES[d]).join(', ');
+        }
+        if (rule.type === 'interval_days') return `раз в ${rule.step} дн.`;
+        return '';
+    }
+
+    const CATEGORY_LABELS = {
+        face: 'Уход за лицом',
+        hair: 'Уход за волосами',
+        general: 'Общее состояние'
+    };
+
+    const DEFAULT_HABITS = [
+        { id: 1, name: 'Пилинг лица', category: 'face', rule: { type: 'interval_days', startDate: '2026-06-04', step: 3 } },
+        { id: 2, name: 'Втирать сыворотку', category: 'hair', rule: { type: 'everyday' } },
+        { id: 3, name: 'Втирать спрей', category: 'hair', rule: { type: 'specific_weekdays', weekdays: [1, 4] } },
+        { id: 4, name: 'Пилинг кожи головы', category: 'hair', rule: { type: 'interval_days', startDate: '2026-06-04', step: 6 } },
+        { id: 5, name: 'Витамин D', category: 'general', rule: { type: 'everyday' } },
+        { id: 6, name: 'Женские витамины', category: 'general', rule: { type: 'everyday' } },
+        { id: 7, name: 'Железо', category: 'general', rule: { type: 'everyday' } }
     ];
-    
-    // Кэш целевых дней для каждой привычки
-    let targetCache = new Map();
-    function getTargetSet(habit) {
-        if (targetCache.has(habit.id)) return targetCache.get(habit.id);
-        const set = getTargetDaysForHabit(habit.rule);
-        targetCache.set(habit.id, set);
-        return set;
-    }
-    
+
     // ---------- LocalStorage ----------
-    const STORAGE_KEY = 'holistic_tracker_v4_2026';
+    const STORAGE_KEY = 'holistic_tracker_v5';
+    const OLD_STORAGE_KEY = 'holistic_tracker_v4_2026';
+
     function loadData() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
             try {
                 const parsed = JSON.parse(stored);
+                if (parsed.habitsVersion === 9 && parsed.habits && parsed.completions) {
+                    const completionsMap = new Map();
+                    for (let [hid, arr] of Object.entries(parsed.completions)) {
+                        completionsMap.set(parseInt(hid), new Set(arr));
+                    }
+                    return {
+                        periodStart: parsed.periodStart || DEFAULT_PERIOD_START,
+                        periodEnd: parsed.periodEnd || DEFAULT_PERIOD_END,
+                        habits: parsed.habits,
+                        completionsMap
+                    };
+                }
+            } catch (e) {}
+        }
+
+        // Миграция со старой версии трекера (только отметки выполнения)
+        const old = localStorage.getItem(OLD_STORAGE_KEY);
+        if (old) {
+            try {
+                const parsed = JSON.parse(old);
                 if (parsed.habitsVersion === 8 && parsed.completions) {
                     const completionsMap = new Map();
                     for (let [hid, arr] of Object.entries(parsed.completions)) {
                         completionsMap.set(parseInt(hid), new Set(arr));
                     }
-                    return { completionsMap };
+                    return {
+                        periodStart: DEFAULT_PERIOD_START,
+                        periodEnd: DEFAULT_PERIOD_END,
+                        habits: JSON.parse(JSON.stringify(DEFAULT_HABITS)),
+                        completionsMap
+                    };
                 }
-            } catch(e) {}
+            } catch (e) {}
         }
+
         const freshMap = new Map();
-        HABITS_DATA.forEach(h => freshMap.set(h.id, new Set()));
-        return { completionsMap: freshMap };
+        DEFAULT_HABITS.forEach(h => freshMap.set(h.id, new Set()));
+        return {
+            periodStart: DEFAULT_PERIOD_START,
+            periodEnd: DEFAULT_PERIOD_END,
+            habits: JSON.parse(JSON.stringify(DEFAULT_HABITS)),
+            completionsMap: freshMap
+        };
     }
-    
-    function saveData(completionsMap) {
+
+    function saveData(state) {
         const toStore = {
-            habitsVersion: 8,
+            habitsVersion: 9,
+            periodStart: state.periodStart,
+            periodEnd: state.periodEnd,
+            habits: state.habits,
             completions: {}
         };
-        for (let [hid, set] of completionsMap.entries()) {
+        for (let [hid, set] of state.completions.entries()) {
             toStore.completions[hid] = Array.from(set);
         }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
     }
-    
-    // --- Прогресс: только по целевым дням ---
-    function computeProgressPercent(habit, completionsMap) {
-        const targetSet = getTargetSet(habit);
-        if (targetSet.size === 0) return 0;
-        const completedSet = completionsMap.get(habit.id) || new Set();
-        let done = 0;
-        for (let d of targetSet) {
-            if (completedSet.has(d)) done++;
-        }
-        return Math.round((done / targetSet.size) * 100);
-    }
-    
-    // Серия подряд: последовательность целевых дней от сегодня назад, где каждый выполнен
-    function computeStreak(habit, completionsMap) {
-        const targetSet = getTargetSet(habit);
-        const targetDates = Array.from(targetSet).sort();
-        if (targetDates.length === 0) return 0;
-        const todayStr = getTodayStr();
-        let idx = -1;
-        for (let i = 0; i < targetDates.length; i++) {
-            if (targetDates[i] <= todayStr) idx = i;
-        }
-        if (idx === -1) return 0;
-        const completedSet = completionsMap.get(habit.id) || new Set();
-        let streak = 0;
-        for (let i = idx; i >= 0; i--) {
-            if (completedSet.has(targetDates[i])) streak++;
-            else break;
-        }
-        return streak;
-    }
-    
-    function getTodayStr() {
-        const d = new Date();
-        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    }
-    
-    function getTodayCompletedCount(habits, completionsMap) {
-        const today = getTodayStr();
-        let cnt = 0;
-        for (let h of habits) {
-            const set = completionsMap.get(h.id);
-            if (set && set.has(today)) cnt++;
-        }
-        return cnt;
-    }
-    
-    function overallPercent(habits, completionsMap) {
-        if (!habits.length) return 0;
-        let sum = 0;
-        for (let h of habits) sum += computeProgressPercent(h, completionsMap);
-        return Math.round(sum / habits.length);
-    }
-    
+
     // Vue приложение
     new Vue({
         el: '#app',
         data: {
-            daysList: DAYS_LIST,
-            habits: HABITS_DATA,
-            completions: new Map()
+            periodStart: DEFAULT_PERIOD_START,
+            periodEnd: DEFAULT_PERIOD_END,
+            habits: [],
+            completions: new Map(),
+            showSettings: false,
+            weekdayOptions: [
+                { value: 1, label: 'Пн' }, { value: 2, label: 'Вт' }, { value: 3, label: 'Ср' },
+                { value: 4, label: 'Чт' }, { value: 5, label: 'Пт' }, { value: 6, label: 'Сб' }, { value: 7, label: 'Вс' }
+            ],
+            newHabit: {
+                name: '',
+                category: 'face',
+                ruleType: 'everyday',
+                weekdays: [],
+                intervalStep: 2
+            }
         },
         computed: {
+            daysList() {
+                return generateDateRange(this.periodStart, this.periodEnd);
+            },
             overallProgress() {
-                return overallPercent(this.habits, this.completions);
-            },
-            todayDoneCount() {
-                return getTodayCompletedCount(this.habits, this.completions);
-            },
-            totalHabitsCount() {
-                return this.habits.length;
+                if (!this.habits.length) return 0;
+                let sum = 0;
+                for (let h of this.habits) sum += this.habitProgressPercent(h);
+                return Math.round(sum / this.habits.length);
             }
         },
         methods: {
             getHabitsByCategory(cat) {
                 return this.habits.filter(h => h.category === cat);
+            },
+            categoryLabel(cat) {
+                return CATEGORY_LABELS[cat] || cat;
+            },
+            getTargetSet(habit) {
+                return getTargetDaysForHabit(habit.rule, this.daysList, this.periodEnd);
             },
             isCompleted(habitId, dateStr) {
                 const s = this.completions.get(habitId);
@@ -626,8 +772,7 @@
             isTargetDay(habitId, dateStr) {
                 const habit = this.habits.find(h => h.id === habitId);
                 if (!habit) return false;
-                const targetSet = getTargetSet(habit);
-                return targetSet.has(dateStr);
+                return this.getTargetSet(habit).has(dateStr);
             },
             toggleHabit(habitId, dateStr) {
                 const currentSet = this.completions.get(habitId);
@@ -645,17 +790,61 @@
                 this.saveToLocal();
             },
             habitProgressPercent(habit) {
-                return computeProgressPercent(habit, this.completions);
+                const targetSet = this.getTargetSet(habit);
+                if (targetSet.size === 0) return 0;
+                const completedSet = this.completions.get(habit.id) || new Set();
+                let done = 0;
+                for (let d of targetSet) {
+                    if (completedSet.has(d)) done++;
+                }
+                return Math.round((done / targetSet.size) * 100);
             },
-            habitCurrentStreak(habit) {
-                return computeStreak(habit, this.completions);
+            habitRuleText(habit) {
+                return describeRule(habit.rule);
+            },
+            addHabit() {
+                const name = this.newHabit.name.trim();
+                if (!name) return;
+                let rule;
+                if (this.newHabit.ruleType === 'specific_weekdays') {
+                    if (!this.newHabit.weekdays.length) return;
+                    rule = { type: 'specific_weekdays', weekdays: this.newHabit.weekdays.slice().sort() };
+                } else if (this.newHabit.ruleType === 'interval_days') {
+                    rule = { type: 'interval_days', startDate: this.periodStart, step: Math.max(2, this.newHabit.intervalStep || 2) };
+                } else {
+                    rule = { type: 'everyday' };
+                }
+                const id = this.habits.length ? Math.max(...this.habits.map(h => h.id)) + 1 : 1;
+                this.habits.push({ id, name, category: this.newHabit.category, rule });
+                this.completions.set(id, new Set());
+                this.newHabit.name = '';
+                this.newHabit.weekdays = [];
+                this.newHabit.intervalStep = 2;
+                this.saveToLocal();
+            },
+            removeHabit(id) {
+                this.habits = this.habits.filter(h => h.id !== id);
+                this.completions.delete(id);
+                this.saveToLocal();
             },
             saveToLocal() {
-                saveData(this.completions);
+                saveData({
+                    periodStart: this.periodStart,
+                    periodEnd: this.periodEnd,
+                    habits: this.habits,
+                    completions: this.completions
+                });
             }
+        },
+        watch: {
+            periodStart() { this.saveToLocal(); },
+            periodEnd() { this.saveToLocal(); }
         },
         mounted() {
             const loaded = loadData();
+            this.periodStart = loaded.periodStart;
+            this.periodEnd = loaded.periodEnd;
+            this.habits = loaded.habits;
             this.completions = loaded.completionsMap;
             for (let h of this.habits) {
                 if (!this.completions.has(h.id)) {
@@ -663,7 +852,7 @@
                 }
             }
             this.saveToLocal();
-            
+
             // Обновление при смене дня (полночь)
             const refreshMidnight = () => {
                 this.$forceUpdate();
