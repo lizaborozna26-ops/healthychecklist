@@ -10,5 +10,5 @@
   <rect width="200" height="200" rx="42" fill="url(#bgGrad)"/>
 
   <text x="100" y="124" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-        font-size="92" font-weight="800" fill="#ffffff" text-anchor="middle">LB</text>
+        font-size="92" font-weight="800" fill="#3d1f6e" text-anchor="middle">LB</text>
 </svg>
