@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Трекер ухода | Лицо + Волосы + Общее состояние (2026)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,8 +14,17 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --face-accent: #ec6f9b;
+            --face-light: #fde6ef;
+            --hair-accent: #8b6fec;
+            --hair-light: #ece6fd;
+            --general-accent: #2f9b6e;
+            --general-light: #e3f7ee;
+        }
+
         body {
-            background: linear-gradient(145deg, #edf2f7 0%, #dee4ed 100%);
+            background: linear-gradient(145deg, #fdf3f7 0%, #eef0fb 45%, #e7f6ef 100%);
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             padding: 2rem 1.5rem;
             color: #1a2c3e;
@@ -39,10 +51,10 @@
         }
 
         h1 {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.9rem;
             letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #1f4e6e, #2c6e4f);
+            background: linear-gradient(135deg, #ec6f9b, #8b6fec, #2f9b6e);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -96,18 +108,22 @@
 
         .category-block {
             margin-bottom: 2rem;
-            background: rgba(255,255,240,0.3);
+            background: rgba(255,255,255,0.35);
             border-radius: 2rem;
             padding: 0.2rem 0 0.8rem 0;
         }
 
+        .category-block.face { --accent: var(--face-accent); --accent-light: var(--face-light); }
+        .category-block.hair { --accent: var(--hair-accent); --accent-light: var(--hair-light); }
+        .category-block.general { --accent: var(--general-accent); --accent-light: var(--general-light); }
+
         .category-title {
             font-size: 1.5rem;
-            font-weight: 650;
-            padding: 0.5rem 1rem 0.2rem 1rem;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem 0.3rem 1rem;
             margin-bottom: 0.8rem;
-            border-left: 6px solid #2f9b6e;
-            background: linear-gradient(90deg, #f8fbfe, transparent);
+            border-left: 6px solid var(--accent, #2f9b6e);
+            background: linear-gradient(90deg, var(--accent-light, #f8fbfe), transparent);
             border-radius: 0 30px 30px 0;
         }
 
@@ -123,8 +139,14 @@
             backdrop-filter: blur(4px);
             border-radius: 1.5rem;
             padding: 0.9rem 1rem;
-            transition: all 0.1s;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
             box-shadow: 0 2px 6px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.9);
+            border-top: 3px solid var(--accent, #2f9b6e);
+        }
+
+        .habit-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9);
         }
 
         .habit-header {
@@ -166,10 +188,11 @@
         }
 
         .progress-fill {
-            background: #2f9b6e;
+            background: linear-gradient(90deg, var(--accent, #2f9b6e), var(--accent, #2f9b6e));
             height: 100%;
             width: 0%;
             border-radius: 20px;
+            transition: width 0.3s ease;
         }
 
         .streak-badge {
@@ -211,7 +234,7 @@
             font-size: 0.7rem;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.08s linear;
+            transition: transform 0.12s ease, background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(90, 130, 150, 0.2);
             text-align: center;
@@ -228,10 +251,11 @@
         }
 
         .day-cell.completed {
-            background: #2f9b6e;
+            background: var(--accent, #2f9b6e);
             color: white;
-            border-color: #1f704b;
-            box-shadow: 0 2px 8px rgba(47, 155, 110, 0.25);
+            border-color: var(--accent, #2f9b6e);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+            transform: scale(1.04);
         }
 
         .day-cell.target {
@@ -241,12 +265,17 @@
 
         .day-cell.completed.target {
             border: 2px solid #ffaa33;
-            background: #2f9b6e;
+            background: var(--accent, #2f9b6e);
         }
 
         .day-cell:hover {
-            transform: scale(1.02);
+            transform: scale(1.08);
             background: #eef3fc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .day-cell.completed:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 700px) {
@@ -290,7 +319,7 @@
         </div>
 
         <!-- Блок 1: Уход за лицом -->
-        <div class="category-block">
+        <div class="category-block face">
             <div class="category-title">✨ Уход за лицом</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('face')" :key="habit.id" class="habit-card">
@@ -322,7 +351,7 @@
         </div>
 
         <!-- Блок 2: Уход за волосами -->
-        <div class="category-block">
+        <div class="category-block hair">
             <div class="category-title">💆‍♀️ Уход за волосами</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('hair')" :key="habit.id" class="habit-card">
@@ -351,7 +380,7 @@
         </div>
 
         <!-- Блок 3: Забота об общем состоянии -->
-        <div class="category-block">
+        <div class="category-block general">
             <div class="category-title">💊 Забота об общем состоянии</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('general')" :key="habit.id" class="habit-card">
@@ -673,4 +702,3 @@
 </script>
 </body>
 </html>
-```
