@@ -151,6 +151,7 @@
         .habit-edit-name {
             font-weight: 700;
             flex: 1 1 160px;
+            min-width: 120px;
         }
 
         .habit-edit-meta {
@@ -454,7 +455,7 @@
         <div class="settings-panel" v-if="showSettings">
             <div class="settings-title">Мои привычки</div>
             <div class="habit-edit-row" v-for="habit in habits" :key="habit.id">
-                <span class="habit-edit-name">{{ habit.name }}</span>
+                <input type="text" class="input-text habit-edit-name" v-model="habit.name" @change="saveToLocal">
                 <span class="habit-edit-meta">{{ categoryLabel(habit.category) }} · {{ habitRuleText(habit) }}</span>
                 <button class="btn-remove" @click="removeHabit(habit.id)">Удалить</button>
             </div>
