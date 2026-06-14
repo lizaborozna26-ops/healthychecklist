@@ -120,8 +120,6 @@
             padding: 0.6rem 1.2rem 0.3rem 1rem;
             margin-bottom: 0.8rem;
             border-left: 6px solid var(--accent, #2f9b6e);
-            background: linear-gradient(90deg, var(--accent-light, #f8fbfe), transparent);
-            border-radius: 0 30px 30px 0;
         }
 
         .habits-list {
@@ -292,12 +290,12 @@
         }
 
         .info-footer {
-            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
             font-size: 0.7rem;
             color: #8b7ca8;
             text-align: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 1rem;
         }
     </style>
 </head>
@@ -305,27 +303,31 @@
 <div id="app">
     <div class="tracker-global">
         <div class="header">
-            <h1>🌿 Комплексный трекер здоровья</h1>
-            <div class="period-badge">📆 4 июня – 3 июля 2026 • 30 дней</div>
+            <h1>Комплексный трекер здоровья</h1>
+            <div class="period-badge">4 июня – 3 июля 2026 • 30 дней</div>
         </div>
 
         <div class="stats-row">
             <div class="stat-card"><span class="stat-label">Общий прогресс</span><span class="stat-value">{{ overallProgress }}%</span></div>
-            <div class="stat-card"><span class="stat-label">🏆 Лучшая серия</span><span class="stat-value">{{ globalMaxStreak }}</span></div>
-            <div class="stat-card"><span class="stat-label">✅ Выполнено сегодня</span><span class="stat-value">{{ todayDoneCount }} / {{ totalHabitsCount }}</span></div>
+            <div class="stat-card"><span class="stat-label">Выполнено сегодня</span><span class="stat-value">{{ todayDoneCount }} / {{ totalHabitsCount }}</span></div>
+        </div>
+
+        <div class="info-footer">
+            <strong>Целевые дни обведены оранжевым</strong> — это рекомендованные даты (рассчитаны для 2026 года).<br>
+            Вы можете отмечать <strong>любой день</strong> (в том числе нецелевой). Прогресс считается по целевым дням, серия — по последовательным выполненным целевым дням. Данные сохраняются в браузере.
         </div>
 
         <!-- Блок 1: Уход за лицом -->
         <div class="category-block face">
-            <div class="category-title">✨ Уход за лицом</div>
+            <div class="category-title">Уход за лицом</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('face')" :key="habit.id" class="habit-card">
                     <div class="habit-header">
-                        <div class="habit-name"><span>{{ habit.icon }} {{ habit.name }}</span></div>
+                        <div class="habit-name"><span>{{ habit.name }}</span></div>
                         <div class="habit-stats">
-                            <span>📊 прогресс: {{ habitProgressPercent(habit) }}%</span>
+                            <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">🔥 серия: {{ habitCurrentStreak(habit) }} дн.</span>
+                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
                     <div class="rule-note" v-html="habit.ruleText"></div>
@@ -349,15 +351,15 @@
 
         <!-- Блок 2: Уход за волосами -->
         <div class="category-block hair">
-            <div class="category-title">💆‍♀️ Уход за волосами</div>
+            <div class="category-title">Уход за волосами</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('hair')" :key="habit.id" class="habit-card">
                     <div class="habit-header">
-                        <div class="habit-name"><span>{{ habit.icon }} {{ habit.name }}</span></div>
+                        <div class="habit-name"><span>{{ habit.name }}</span></div>
                         <div class="habit-stats">
-                            <span>📊 прогресс: {{ habitProgressPercent(habit) }}%</span>
+                            <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">🔥 серия: {{ habitCurrentStreak(habit) }} дн.</span>
+                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
                     <div class="rule-note" v-html="habit.ruleText"></div>
@@ -378,15 +380,15 @@
 
         <!-- Блок 3: Забота об общем состоянии -->
         <div class="category-block general">
-            <div class="category-title">💊 Забота об общем состоянии</div>
+            <div class="category-title">Забота об общем состоянии</div>
             <div class="habits-list">
                 <div v-for="habit in getHabitsByCategory('general')" :key="habit.id" class="habit-card">
                     <div class="habit-header">
-                        <div class="habit-name"><span>{{ habit.icon }} {{ habit.name }}</span></div>
+                        <div class="habit-name"><span>{{ habit.name }}</span></div>
                         <div class="habit-stats">
-                            <span>📊 прогресс: {{ habitProgressPercent(habit) }}%</span>
+                            <span>прогресс: {{ habitProgressPercent(habit) }}%</span>
                             <div class="progress-wrap"><div class="progress-fill" :style="{width: habitProgressPercent(habit)+'%'}"></div></div>
-                            <span class="streak-badge">🔥 серия: {{ habitCurrentStreak(habit) }} дн.</span>
+                            <span class="streak-badge">серия: {{ habitCurrentStreak(habit) }} дн.</span>
                         </div>
                     </div>
                     <div class="rule-note" v-html="habit.ruleText"></div>
@@ -403,10 +405,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="info-footer">
-            🌟 <strong>Целевые дни обведены оранжевым</strong> — это рекомендованные даты (рассчитаны для 2026 года).<br>
-            Вы можете отмечать <strong>любой день</strong> (в том числе нецелевой). Прогресс считается по целевым дням, серия — по последовательным выполненным целевым дням. Данные сохраняются в браузере.
         </div>
     </div>
 </div>
@@ -479,31 +477,31 @@
     // Пилинг кожи головы: 1 раз в 6 дней с 04.06 → 04.06, 10.06, 16.06, 22.06, 28.06
     const HABITS_DATA = [
         // Уход за лицом
-        { id: 1, name: 'Пилинг лица', icon: '🍑', category: 'face', 
+        { id: 1, name: 'Пилинг лица', category: 'face',
           rule: { type: 'interval_days', startDate: '2026-06-04', step: 3 },
-          ruleText: '🎯 1 раз в 3 дня (целевые: 04.06, 07.06, 10.06, 13.06, 16.06, 19.06, 22.06, 25.06, 28.06, 01.07)' },
-        
+          ruleText: '1 раз в 3 дня (целевые: 04.06, 07.06, 10.06, 13.06, 16.06, 19.06, 22.06, 25.06, 28.06, 01.07)' },
+
         // Уход за волосами
-        { id: 2, name: 'Втирать сыворотку', icon: '💧', category: 'hair', 
-          rule: { type: 'everyday' }, 
-          ruleText: '🎯 каждый день (обязательно)' },
-        { id: 3, name: 'Втирать спрей', icon: '🌿', category: 'hair', 
+        { id: 2, name: 'Втирать сыворотку', category: 'hair',
+          rule: { type: 'everyday' },
+          ruleText: 'каждый день (обязательно)' },
+        { id: 3, name: 'Втирать спрей', category: 'hair',
           rule: { type: 'specific_weekdays', weekdays: [1,4] },   // понедельник и четверг
-          ruleText: '🎯 каждый понедельник и четверг (2026: 04.06(чт), 08.06(пн), 11.06(чт), 15.06(пн), 18.06(чт), 22.06(пн), 25.06(чт), 29.06(пн), 02.07(чт))' },
-        { id: 4, name: 'Пилинг кожи головы', icon: '✨', category: 'hair', 
+          ruleText: 'каждый понедельник и четверг (2026: 04.06(чт), 08.06(пн), 11.06(чт), 15.06(пн), 18.06(чт), 22.06(пн), 25.06(чт), 29.06(пн), 02.07(чт))' },
+        { id: 4, name: 'Пилинг кожи головы', category: 'hair',
           rule: { type: 'interval_days', startDate: '2026-06-04', step: 6 },
-          ruleText: '🎯 1 раз в 6 дней (04.06, 10.06, 16.06, 22.06, 28.06)' },
-        
+          ruleText: '1 раз в 6 дней (04.06, 10.06, 16.06, 22.06, 28.06)' },
+
         // Общее состояние (каждый день)
-        { id: 5, name: 'Витамин D', icon: '☀️', category: 'general', 
-          rule: { type: 'everyday' }, 
-          ruleText: '🎯 каждый день' },
-        { id: 6, name: 'Женские витамины', icon: '🌸', category: 'general', 
-          rule: { type: 'everyday' }, 
-          ruleText: '🎯 каждый день' },
-        { id: 7, name: 'Железо', icon: '🩸', category: 'general', 
-          rule: { type: 'everyday' }, 
-          ruleText: '🎯 каждый день' }
+        { id: 5, name: 'Витамин D', category: 'general',
+          rule: { type: 'everyday' },
+          ruleText: 'каждый день' },
+        { id: 6, name: 'Женские витамины', category: 'general',
+          rule: { type: 'everyday' },
+          ruleText: 'каждый день' },
+        { id: 7, name: 'Железо', category: 'general',
+          rule: { type: 'everyday' },
+          ruleText: 'каждый день' }
     ];
     
     // Кэш целевых дней для каждой привычки
@@ -584,15 +582,6 @@
         return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
     
-    function globalMaxStreak(habits, completionsMap) {
-        let maxS = 0;
-        for (let h of habits) {
-            let s = computeStreak(h, completionsMap);
-            if (s > maxS) maxS = s;
-        }
-        return maxS;
-    }
-    
     function getTodayCompletedCount(habits, completionsMap) {
         const today = getTodayStr();
         let cnt = 0;
@@ -621,9 +610,6 @@
         computed: {
             overallProgress() {
                 return overallPercent(this.habits, this.completions);
-            },
-            globalMaxStreak() {
-                return globalMaxStreak(this.habits, this.completions);
             },
             todayDoneCount() {
                 return getTodayCompletedCount(this.habits, this.completions);
